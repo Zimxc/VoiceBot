@@ -1,6 +1,6 @@
 import speech_recognition as sr
-import webbrowser
 import subprocess
+import gpt
 recognizer = sr.Recognizer()
 def capture_voice_input():
     with sr.Microphone() as source:
@@ -27,7 +27,16 @@ def process_voice_command(text):
         print("До побачення!Гарного дня!")
     elif "калькулятор" in text.lower():
         subprocess.call(['calc'])
+    elif "джарвіс" in text.lower():
+        result = gpt.generate(text)
+        print(result)
+    elif "людина-павук" in text.lower():
+        result = gpt.generate(text)
+        print(result)
+    elif "chrome" in text.lower():
+        subprocess.call(['C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'])
         return True
+        
     else:
         print("Я Вас не розумію. Повторіть Ваш запит")
     return False
